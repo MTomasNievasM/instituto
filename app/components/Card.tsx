@@ -11,16 +11,16 @@ interface CardProps {
 
 export default function Card({ title, image, excerpt, slug, date }: CardProps) {
   return (
-    <article className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col">
-      <div className="relative h-48 w-full">
-        <Image src={image} alt={title} fill className="object-cover" />
+    <article className="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+      <div className="bg-light d-flex align-items-center justify-content-center" style={{height: '140px'}}>
+        <Image src={image} alt={title} width={64} height={64} style={{objectFit: 'contain'}} /> {/* */}
       </div>
-      <div className="p-5 flex flex-col flex-grow">
-        <time className="text-xs font-bold text-blue-600 uppercase mb-2">{date}</time>
-        <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
-        <p className="text-gray-600 text-sm mb-4 flex-grow">{excerpt}</p>
-        <Link href={`/${slug}`} className="text-blue-700 font-semibold hover:underline mt-auto">
-          Leer más →
+      <div className="card-body p-4 d-flex flex-column">
+        <span className="badge bg-primary mb-2 w-fit-content" style={{width: 'fit-content'}}>{date}</span>
+        <h3 className="h5 fw-bold mb-3">{title}</h3>
+        <p className="text-muted small flex-grow-1">{excerpt}</p>
+        <Link href={`/${slug}`} className="text-decoration-none fw-bold small mt-3">
+          Saber más →
         </Link>
       </div>
     </article>

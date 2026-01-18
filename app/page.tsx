@@ -1,49 +1,34 @@
-import Card from "./components/Card"; // Importamos nuestro componente nuevo
+import Card from "./components/Card";
 
 export default function Home() {
   return (
     <main>
-      {/* Cabecera Azul */}
+      {/* SECCIÓN BIENVENIDOS (Igual a tu foto) */}
       <section className="hero">
-        <h1>IES Tecnológico</h1>
-        <p>Formación, Innovación y Futuro</p>
+        <div className="hero-overlay"></div>
+        <div className="position-relative z-2">
+          <h1 className="display-1 fw-bold text-uppercase tracking-widest">Bienvenidos</h1>
+          <p className="lead text-uppercase opacity-75">IES Cura Valera - Formación y Futuro</p>
+        </div>
       </section>
 
-      <div className="container">
-        {/* Sección de Bienvenida */}
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h2>Bienvenidos al curso 2025/2026</h2>
-          <p>
-            Nuestro centro ofrece una amplia oferta educativa adaptada a las 
-            necesidades del mercado laboral actual.
-          </p>
+      {/* CONTENIDO DE INICIO */}
+      <div className="container py-5">
+        <div className="text-center mb-5">
+          <h2 className="fw-bold">Nuestros Servicios</h2>
+          <hr className="mx-auto border-primary border-3 opacity-100" style={{width: '50px'}} />
         </div>
-
-        {/* Grid de Tarjetas: Ahora usamos el componente reutilizable */}
-        <section className="cards-grid">
-          
-          <Card 
-            title="Erasmus+" 
-            text="Abierto el plazo para solicitar becas de movilidad europea."
-            imageSrc="/globe.svg"
-            imageAlt="Mundo"
-          />
-
-          <Card 
-            title="Matriculación" 
-            text="Descarga los impresos necesarios para la secretaría virtual."
-            imageSrc="/file.svg"
-            imageAlt="Documentos"
-          />
-
-          <Card 
-            title="Aula Virtual" 
-            text="Acceso directo a la plataforma Moodle del centro."
-            imageSrc="/window.svg"
-            imageAlt="Aula"
-          />
-
-        </section>
+        <div className="row g-4">
+          <div className="col-md-4">
+            <Card title="Erasmus+" excerpt="Programas de movilidad europea para alumnos." image="/globe.svg" slug="erasmus" date="2025/2026" />
+          </div>
+          <div className="col-md-4">
+            <Card title="Secretaría" excerpt="Trámites de matriculación y becas online." image="/file.svg" slug="secretaria" date="Gestión" />
+          </div>
+          <div className="col-md-4">
+            <Card title="Aula Virtual" excerpt="Acceso a Moodle y recursos educativos." image="/window.svg" slug="aula-virtual" date="Online" />
+          </div>
+        </div>
       </div>
     </main>
   );

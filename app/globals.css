@@ -1,36 +1,30 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-/* Reseteo básico */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--background);
-  color: var(--foreground);
-  overflow-x: hidden; /* Evita scroll lateral */
-}
-
-/* CLASE HERO: La imagen gigante */
+/* Configuración del Hero (Basado en tu imagen) */
 .hero {
-  /* Pon aquí el nombre exacto de tu foto en la carpeta public */
-  background-image: url('/fondo.jpg'); 
+  position: relative;
+  height: 85vh; /* Altura de la imagen principal */
+  width: 100%;
+  background-image: url('/fondo.jpg'); /* */
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  
-  /* Altura: 85% de la pantalla */
-  height: 85vh; 
-  width: 100%;
-  
-  /* Opcional: Flex para centrar si pones texto dentro */
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+  text-align: center;
 }
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* Capa oscura para legibilidad */
+}
+
+/* Espaciado para páginas secundarias (SPA) */
+.page-content {
+  padding-top: 100px;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.tracking-widest { letter-spacing: 0.3em; }
+.text-uppercase { text-transform: uppercase; }
