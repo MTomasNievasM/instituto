@@ -1,15 +1,39 @@
-export default function Departamentos() {
-  const depto = ["Informática", "Sanidad", "Matemáticas", "Inglés", "Orientación"];
+import React from 'react';
+
+export default function DepartamentosPage() {
   return (
-    <main className="page-content container">
-      <h1 className="fw-bold mb-5">Nuestros Departamentos</h1>
-      <div className="list-group">
-        {depto.map(d => (
-          <div key={d} className="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-            <span className="h5 mb-0">{d}</span>
-            <button className="btn btn-sm btn-outline-primary">Ver programa</button>
+    <main>
+      {/* Cabecera visual consistente */}
+      <section className="hero-small">
+        <div className="hero-overlay"></div>
+        <div className="position-relative z-2">
+          <h1 className="display-4 fw-bold text-uppercase tracking-widest">Departamentos</h1>
+          <p className="lead text-white-50">Áreas didácticas y profesorado</p>
+        </div>
+      </section>
+
+      <div className="container">
+        <div className="row g-4">
+          {/* Ejemplo de contenido */}
+          <div className="col-md-4">
+            <div className="p-4 border rounded shadow-sm">
+              <h3>Informática</h3>
+              <p>Ciclos formativos de grado medio y superior.</p>
+            </div>
           </div>
-        ))}
+          <div className="col-md-4">
+            <div className="p-4 border rounded shadow-sm">
+              <h3>Matemáticas</h3>
+              <p>Asignaturas de ESO y Bachillerato.</p>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="p-4 border rounded shadow-sm">
+              <h3>Lengua</h3>
+              <p>Fomento de la lectura y escritura.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
