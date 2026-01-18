@@ -1,22 +1,32 @@
-// app/components/Navbar.tsx
-"use client";
-import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // Hook para detectar la ruta actual
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "./components/Navbar"; 
 
-export default function Navbar() {
-  const pathname = usePathname();
+export const metadata: Metadata = {
+  title: "IES Cura Valera",
+  description: "Sitio web oficial",
+};
 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark position-absolute top-0 w-100 z-3 bg-transparent py-3">
-      <div className="container">
-        <Link href="/" className="navbar-brand fw-bold text-uppercase">IES Cura Valera</Link>
-        <div className="navbar-nav ms-auto fw-bold text-uppercase small">
-          <Link href="/" className={`nav-link px-3 ${pathname === '/' ? 'active' : ''}`}>Inicio</Link>
-          <Link href="/centro" className={`nav-link px-3 ${pathname === '/centro' ? 'active' : ''}`}>El Centro</Link>
-          <Link href="/departamentos" className={`nav-link px-3 ${pathname === '/departamentos' ? 'active' : ''}`}>Departamentos</Link>
-          <Link href="/contacto" className="nav-link px-3 border border-white rounded-pill ms-lg-2">Contacto</Link>
-        </div>
-      </div>
-    </nav>
+    <html lang="es">
+      <head>
+        {/* Esto es vital para que Bootstrap funcione y se vea como la original */}
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <Navbar />
+        {children}
+        {/* Scripts de Bootstrap para que funcionen los menús desplegables */}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" async></script>
+      </body>
+    </html>
   );
 }
