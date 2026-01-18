@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
-import Image from "next/image";
 import "./globals.css";
+import Navbar from "./components/Navbar"; // Importamos el nuevo Navbar
+import "bootstrap/dist/css/bootstrap.min.css"; // <--- AÑADE ESTO
+import "./globals.css";
+// ... resto de imports
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "IES Tecnológico",
-  description: "Web oficial del instituto",
+  title: "IES Cura Valera",
+  description: "Web oficial del instituto recreada en Next.js",
 };
 
 export default function RootLayout({
@@ -26,45 +28,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 flex flex-col min-h-screen`}>
         
-        {/* --- HEADER BLANCO FIJO --- */}
-        <nav style={{
-          height: '90px',
-          backgroundColor: 'white',
-          borderBottom: '1px solid #e5e5e5',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 5%',
-          position: 'sticky',
-          top: 0,
-          zIndex: 1000
-        }}>
-          
-          {/* LOGO + NOMBRE (Izquierda) */}
-          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '15px' }}>
-            {/* Logo de ejemplo */}
-            <Image 
-              src="/vercel.svg" 
-              alt="Logotipo" 
-              width={40} 
-              height={40} 
-              style={{ filter: 'grayscale(100%)' }} 
-            />
-            
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#004d99', lineHeight: '1' }}>
-                IES INSTITUTO
-              </span>
-              <span style={{ fontSize: '0.8rem', color: '#666', letterSpacing: '2px', textTransform: 'uppercase' }}>
-                Centro Educativo
-              </span>
-            </div>
-          </Link>
+        {/* Aquí insertamos el Navbar funcional */}
+        <Navbar />
+        
+        {/* Contenido principal */}
+        <main className="flex-grow">
+          {children}
+        </main>
 
-          {/* ENLACES (Derecha) */}
-          <ul style={{ display: 'flex', gap: '30px', listStyle: 'none', margin: 0, padding: 0 }}>
-            <li><Link href="/" style={{ textDecoration: 'none', color: '#333', fontWeight: 600, fontSize: '0.9rem', textTransform: 'uppercase' }}>Inicio</Link></li>
-            <li><Link href="/el-centro" style={{ textDecoration: 'none', color: '#333', fontWeight: 600, fontSize: '0.9rem', textTransform: 'uppercase' }}>El Centro</Link></li>
-            <li><Link href="/estudios" style={{ textDecoration: 'none', color: '#333', fontWeight:
+        {/* Footer simple (para cerrar bien la página) */}
+        <footer className="bg-gray-900 text-gray-300 py-8 text-center text-sm">
+          <p>© {new Date().getFullYear()} IES Cura Valera. Todos los derechos reservados.</p>
+        </footer>
+
+      </body>
+    </html>
+  );
+}
