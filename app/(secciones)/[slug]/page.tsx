@@ -1,49 +1,31 @@
-import React from 'react';
+// app/(secciones)/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 
-// Simulación de una base de datos de páginas
 const PAGINAS_DATA: Record<string, { title: string; content: string }> = {
-  'el-centro': {
-    title: 'El Centro',
-    content: 'Aquí iría la historia y descripción del IES Cura Valera...'
-  },
-  'oferta-educativa': {
-    title: 'Oferta Educativa',
-    content: 'Listado de ciclos formativos, ESO y Bachillerato...'
-  },
-  'secretaria': {
-    title: 'Secretaría',
-    content: 'Horarios de atención, impresos y trámites administrativos...'
-  },
+  'el-centro': { title: 'El Centro', content: '...' },
+  'secretaria': { title: 'Secretaría', content: '...' },
+  // ... resto de datos
 };
 
-// Necesario en Next.js 15+ para params asíncronos
-type Props = {
-  params: Promise<{ slug: string }>;
-};
+// Esto genera las páginas en tiempo de compilación para carga instantánea
+export async function generateStaticParams() {
+  return Object.keys(PAGINAS_DATA).map((slug) => ({
+    slug: slug,
+  }));
+}
 
 export default async function SeccionPage({ params }: Props) {
   const { slug } = await params;
   const data = PAGINAS_DATA[slug];
 
-  // Si el slug no existe en nuestros datos, muestra error 404
-  if (!data) {
-    notFound();
-  }
+  if (!data) notFound();
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-      <article className="prose lg:prose-xl mx-auto">
-        <h1 className="text-4xl font-bold text-blue-900 mb-6 capitalize">
-          {data.title}
-        </h1>
-        <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 min-h-[300px]">
-          <p className="text-gray-700 leading-relaxed">
-            {data.content}
-          </p>
-          {/* Aquí podrías añadir componentes específicos más adelante */}
-        </div>
+    <main className="container py-5 mt-5"> {/* Ajuste de margen para no quedar bajo el Navbar */}
+      <article className="card shadow-sm p-5">
+        <h1 className="display-4 text-primary mb-4">{data.title}</h1>
+        <p className="lead">{data.content}</p>
       </article>
-    </div>
+    </main>
   );
 }
