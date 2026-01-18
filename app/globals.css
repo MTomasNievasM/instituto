@@ -1,26 +1,36 @@
-@import "tailwindcss";
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Reseteo básico */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
+  font-family: Arial, Helvetica, sans-serif;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden; /* Evita scroll lateral */
+}
+
+/* CLASE HERO: La imagen gigante */
+.hero {
+  /* Pon aquí el nombre exacto de tu foto en la carpeta public */
+  background-image: url('/fondo.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Altura: 85% de la pantalla */
+  height: 85vh; 
+  width: 100%;
+  
+  /* Opcional: Flex para centrar si pones texto dentro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
